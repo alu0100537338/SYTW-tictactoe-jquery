@@ -1,14 +1,43 @@
-Building a Simple Sinatra Tic-Tac-Toe game 
-==================================================
+Practica 8 - Añadiendo Ajax a TicTacToe
+=======================================
 
-App currently contains:
+Enunciado
+---------
 
-* app.rb - the application code
-* Gemfile - specifies the gems this app relies on
-* Gemfile.lock - automatically generated dependancy file
-* views/ - this is the default folder for erb views
-* layout.erb - this is the default layout to be used for all erb files
-* public/ - this is the default folder for serving static assets
-* Procfile - this tells Heroku or Foreman how to run the application
-* Rakefile- installs the gems and run the server
+Añadir Ajax a la practica anterior TicTacToe
+
+
+Resolucion
+----------
+
+Reciclando la practica anterior de TicTacToe, cambiamos el fichero 'app.rb' para indicar de donde se ha de coger la
+nueva plantilla, y lo que ha de retornar en una jugada.
+
+Ademas añadimos jQuery a la aplicacion, modificando el fichero 'public/js/app.js' para poder usarlo en nuestra app.
+
+
+Warning
+-------
+
+Es posible que sean necesarias librerias complementarias para el correcto funcionamiento:
+
+    sudo apt-get install libecpg-dev
+    sudo apt-get install postgresql-client
+    sudo apt-get install postgresql
+    
+
+Ejecucion
+---------
+
+Para ejecutar la aplicacion desde una consola:
+
+    1. rake
+    2. Acudir a la direccion http://localhost:4567/
+    
+Para acceder directamente:
+
+    http://quiet-taiga-7621.herokuapp.com/
+    
+--------------------------------------------------------------------------------------------------
+Jessica A. Ramos Villarreal - ETSII-ULL
 
