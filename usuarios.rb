@@ -7,6 +7,7 @@ class Usuario
 	property :usuario, String
 	property :num_ganadas, Integer
 	property :num_perdidas, Integer
+	property :num_jugadas, Integer
 end
 
 DataMapper.finalize

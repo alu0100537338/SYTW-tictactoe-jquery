@@ -49,6 +49,10 @@ module TicTacToe
     @board
   end
 
+  def usuario
+    session["usuario"]
+  end
+
   def board
     session["bs"]
   end
@@ -140,9 +144,18 @@ module TicTacToe
   def computer_wins?
     winner == COMPUTER
   end
+
+  def tie?
+    ((winner != COMPUTER) && (winner != HUMAN))
+  end
 end
 
 helpers TicTacToe
+
+get "/" do 
+  session["bs"] = inicializa()
+  haml :game, :locals => { :b => board, :m => '' }
+end
 
 get %r{^/([abc][123])?$} do |human|
   if human then
@@ -153,19 +166,22 @@ get %r{^/([abc][123])?$} do |human|
       board[human] = TicTacToe::CIRCLE
       # computer = board.legal_moves.sample
       computer = smart_move
-      redirect to ('/humanwins') if human_wins?
-      redirect to('/') unless computer
+      return '/humanwins' if human_wins?
+      return '/' unless computer
       board[computer] = TicTacToe::CROSS
       puts "Jugando: #{computer}!"
       puts "Tablero:  #{board.inspect}"
-      redirect to ('/computerwins') if computer_wins?
+      return '/computerwins' if computer_wins?
+      resul = computer
     end
   else
     session["bs"] = inicializa()
     puts "session = "
     pp session
+    resul = "illegal"
   end
-  haml :game, :locals => { :b => board, :m => ''  }
+  puts resul
+  resul
 end
 
 get '/humanwins' do
@@ -176,6 +192,7 @@ get '/humanwins' do
     			if (session["usuario"] != nil)
     				user = Usuario.first(:usuario => session["usuario"])
     				user.num_ganadas = user.num_ganadas + 1
+            user.num_jugadas = user.num_jugadas + 1
     				user.save
     				pp user    			
     			end
@@ -197,6 +214,7 @@ get '/computerwins' do
     			if (session["usuario"] != nil)
     				user = Usuario.first(:usuario => session["usuario"])
     				user.num_perdidas = user.num_perdidas + 1
+            user.num_jugadas = user.num_jugadas + 1
     				user.save
     				pp user
     			end
@@ -205,6 +223,26 @@ get '/computerwins' do
           redirect '/'
       end
 		  haml :final, :locals => { :b => board, :m => m }
+  rescue
+    redirect '/'
+  end
+end
+
+get '/tie' do
+  puts "/tie"
+  pp session
+  begin
+    m = if tie? then
+          if (session["usuario"] != nil)
+            user = Usuario.first(:usuario => session["usuario"])
+            user.num_jugadas = user.num_jugadas + 1
+            user.save
+          end
+          'Empate'
+      else
+        redirect '/'
+      end
+      haml :final, :locals => { :b => board, :m => m}
   rescue
     redirect '/'
   end
