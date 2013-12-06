@@ -1,0 +1,90 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  background: url("/images/tablero.jpg") repeat;
+  background-size: cover; }
+
+.gameboard {
+  width: 500px;
+  margin: 0 auto;
+  text-align: center; }
+
+.gamerow {
+  clear: both; }
+
+.cell {
+  color: blue;
+  background-color: #585858;
+  opacity: 0.8;
+  width: 58.82353px;
+  height: 58.82353px;
+  margin: 4.90196px;
+  padding: 45.24887px;
+  float: left; }
+  .cell:hover {
+    color: black; }
+
+#a1:hover {
+  background-color: #df013a; }
+
+#a2:hover {
+  background-color: #64fe2e; }
+
+#a3:hover {
+  background-color: #df013a; }
+
+#b1:hover {
+  background-color: #64fe2e; }
+
+#b2:hover {
+  background-color: #df013a; }
+
+#b3:hover {
+  background-color: #64fe2e; }
+
+#c1:hover {
+  background-color: #df013a; }
+
+#c2:hover {
+  background-color: #64fe2e; }
+
+#c3:hover {
+  background-color: #df013a; }
+
+.cross {
+  background: url("/images/tom.jpg") no-repeat;
+  background-size: cover; }
+
+.circle {
+  background: url("/images/jerry.jpg") no-repeat;
+  background-size: cover; }
+
+a{
+	color: #FFFFFF;
+}
+
+.button{
+	text-align: center;
+	font-size:15px;
+	font-family:Verdana,Helvetica;
+  font-weight:bold;
+  color:white;
+  background:#8258FA;
+  margin-left: 160px;
+  margin-top: 15px;
+  border-top:0px;
+  width:150px;
+  height:45px;
+}
+
+.header{
+	text-align: center;
+	color: #8000FF;
+}
+
+.base-font, .message {
+  color: #f9a7b0;
+  font: 22px Helvetica, Arial, sans-serif; }
+
+.message {
+  display: inline;
+  background-color: transparent; }

@@ -1,0 +1,24 @@
+.button
+  %a{:href=>"/"}
+    %br
+    Volver al Juego
+
+%br
+%center
+  %h1 Historial Partidas
+  %table
+    %tr
+      %th Usuario
+      %th
+      %th Ganadas
+      %th
+      %th Perdidas
+  -@usuarios.sort_by {|x, y| y}.each do |usuario|
+    %tr
+      %td
+        #{usuario.usuario}
+      %td
+        #{usuario.num_ganadas}    
+      %td
+        #{usuario.num_perdidas}
+      %br
